@@ -1,0 +1,243 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Angular</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css" id="theme">
+
+		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section ><h1>Angular</h1>
+					<a href="https://angular.io/docs">
+						<img src="assets/angular-logo.png" alt="Angular">
+					</a>
+					<aside class="notes">
+						In case that you are absolute beginners with Angular let me quickly explain to you what Angular is and
+						why you should learn it.
+					</aside>
+				</section>
+				<section >
+					<h6><span class="red">Angular </span> is a framework<br>
+						for building client applications <br>in HTML, CSS,
+						and JavaScript/Typescript </h6>
+					<aside class="notes">
+						Angular is a framework for building client applications in HTML, CSS, and either JavaScript or a
+						language like Typescript that compiles to JavaScript.
+						Typescript is more common in Angular community because Angular itself has been written with Typescript.
+					</aside>
+				</section>
+				<section>
+					<h2>History</h2>
+					<div >
+						<p >2010 AngularJS (1.X)</p>
+					</div>
+					<div >
+						<p >2016 Angular (2+)</p>
+
+					</div>
+					<aside class="notes">
+						AngularJS  introduced in 2010 as a javascript framework for building client applications.
+						It gained popularity and angular team decided to rewrite the original framework using typescript and as a result Anglar 2 came out in mid 2016.
+						This new version is entirely different from Angular 1 to the extent that you can think of it as a completely different framework.
+						After it was made some updates  Angular team decided to drop the version suffix and simply call the framework angular.
+						So now we have two kinds of angular.
+						We have Angular JS which is the first generation of Angler written in javascript and is going to die sooner or later.
+						And we also have angular which refers to angular 2 or later.
+		
+					</aside>
+				</section>		
+				<section>
+					<div>
+						<div><h3><span class="red">Benefits <br>of using <br>Angular</span></h3></div>
+						<div>
+							<ul>
+								<li > Gives our applications a clean structure</li>
+								<li > Includes a lot of re-usable code</li>
+								<li > Makes our applications more testable</li>
+							</ul>
+						</div>
+					</div>
+					<aside class="notes">
+						So what are the benefits of using Angular?
+						It gives our application a clear and loosely coupled structure that is easy to understand and easy to
+						maintain.
+						It also brings in a lot of utility code that we can reuse in various applications. Especially when
+						dealing with the user’s navigation and the browser history.
+						Plus, applications build with Angular are more testable so we can easy write automated test to test
+						various part of our application.
+					</aside>
+				</section>
+					<section>
+						<p class="red">Angular CLI</p>
+						<p>Command-Line Interface</p>
+						<pre><code>$ npm install -g @angular/cli</code></pre>
+						<aside class="notes">
+							Then we will need an - Angular CLI
+							It's a command line tool that we use to create a new angular project
+						</aside>
+					</section>
+		
+					<section>
+						<p class="red">New project</p>
+						<pre><code>$ ng new Angular-hello</code></pre>
+						<img src="assets/hello-fin.jpg" alt="creating application process">
+						<aside class="notes">
+							Now we can create our project: ng new and the name of your project.
+							So as you see this command generates files and folders for our project.
+						</aside>
+					</section>
+					<section style="display: flex; flex-direction: row; justify-content: space-between;">
+						<img src="assets/webstorm.svg" alt="WebStorm" height="300px">
+						<img src="assets/VSCode.png" alt="VS Code" height="300px">
+						<img src="assets/idea.png" alt="Idea" height="300px">
+						<aside class="notes">
+							Our project is successfully created now to start coding we need a code editor. You can use any
+							editor which is familiar for you.
+						</aside>
+					</section>
+					<section data-background-image="assets/app.jpg">
+						<aside class="notes">
+							This is our first Angular app.
+						</aside>
+					</section>
+					<section>
+						<h2>Structure of Angular project</h2>
+						<aside class="notes">
+							Now it`s time to look at the structure of Angular project.
+							Let's see what files and folders we have in this new project.
+						</aside>
+					</section>
+					<section data-background-image="assets/structure-main.jpg" data-background-size="500px">
+						<aside class="notes">
+							So the first folder we have here is e2e folder. And this is where we write end to end tests for our
+							application.
+							We have node modules and this is where you store all the third party libraries that our application
+							may depend upon.
+						</aside>
+					</section>
+					<section data-background-image="assets/src.png" data-background-size="400px">
+						<aside class="notes">
+							We have the source folder and this is where we have the actual source code of our application.
+							So we have this app folder here and inside this folder we have a module and a component.
+							We have these assets folder where you store the static assets of our application.
+							We have this environments folder and this is where we store configuration settings for different
+							environments.
+						</aside>
+					</section>
+					<section data-background-image="assets/index-html.png" data-background-size="1100px">
+						<aside class="notes">
+							Also in source folder we have index.html file which contains our Angular application.
+							So note here we don't have any references to a script or a stylesheet.
+							These references will be dynamically inserted into this page. I will show you this a bit later.
+						</aside>
+					</section>
+					<section>
+						<p>Main file (main.ts)</p>
+						<pre><code data-line-numbers>import { enableProdMode } from '@angular/core';
+							import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+							
+							import { AppModule } from './app/app.module';
+							import { environment } from './environments/environment';
+							
+							if (environment.production) {
+							enableProdMode();
+							}
+							platformBrowserDynamic().bootstrapModule(AppModule)
+							.catch(err => console.error(err));</code></pre>
+						<aside class="notes">
+							Also we have main file which is a typescript file and this is basically the starting point of our
+							application.
+							So all you're doing here is bootstrapping the main module of our application which is in this case
+							app module.
+							So angular loads this module and everything else starts from there.
+						</aside>
+					</section>
+					<section data-background-image="assets/src-diff.png" data-background-size="300px">
+						<aside class="notes">
+							We have this polyfills file which basically imports some scripts that are required for running
+							angular.
+							So this polyfills file is a gap between the features of javascript that angular needs and the
+							features supported by the current browsers.
+							We have styles.css and this is where we add the global styles for our application and also each page
+							or each component can have its own styles.
+							We have test.ts which is basically used for setting up more testing environments
+						</aside>
+					</section>
+					<section data-background-image="assets/editconf.png" data-background-size="1200px">
+						<aside class="notes">
+							we have Editorconfig. So if you're working in a team environment you want to make sure that all
+							developers in the team use the same settings in their editors. So this is where you store your
+							settings.
+						</aside>
+					</section>
+					<section data-background-image="assets/lint-config.png" data-background-size="1150px">
+						<aside class="notes">
+							The other file here is TSconfig which has a bunch of settings for your typescript compiler. So your
+							typescript compiler looks at the settings and based on the settings is going to compile your
+							typescript code into javascript browsers can understand.
+							We have TSlint. Jason which includes a number of settings for TSlint.
+						</aside>
+					</section>
+					<section data-background-image="assets/package-json.png" data-background-size="800px">
+						<aside class="notes">
+							Also we have an important file package.Jason.
+							This is a standard file that every node project has apart from a bunch of basic settings here.
+						</aside>
+					</section>
+					<section data-background-image="assets/gitignore.png" data-background-size="1000px">
+						<aside class="notes">
+							Also our Angular project already have a git repository and of course  gitignore file is already there
+						</aside>
+					</section>
+
+					<section>
+						<div>
+							<div><h3><span class="red">Angular CLI<br>and webpack</span></h3></div>
+							<div>
+								<ul>
+									<li > Combines all scripts and stylesheets in a
+										bundles
+									</li>
+									<li > Automatically recompile application and
+										refreshes
+										bundles
+									</li>
+									<li > Refreshes browser<br> <em>(HMR: hot module
+										replacement)</em></li>
+									<li > Switch to native webpack <em>(command: $ ng
+										eject)</em>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<aside class="notes">
+							Angular CLI uses a tool called webpack.
+							It gets all our scripts and stylesheets combines them with them in a bundle and then modifies that bundle. And this is for optimization.
+							Now that aside what I want to note here is that whenever you change one of your files that file being a stylesheet type of file or an HTML file, webpack automatically recompile your application and refreshes your bundles.
+						</aside>
+					</section>
+					<section >
+						<h2 style="text-align: left;">Thank you</h2>
+					</section>
+			</div>
+		</div>
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
